@@ -1,6 +1,6 @@
 
 public class UserAuthentication {
-    private UserRole userRole;
+    private UserRole userRole = UserRole.DEFAULT_USER;
 
     public UserRole getUserRole() {
         return userRole;
@@ -14,7 +14,7 @@ public class UserAuthentication {
         if(userName.toLowerCase().contains("-") || userName.toLowerCase().contains(".")||userPassword.toLowerCase().contains("-") || userPassword.toLowerCase().contains(".")){
             throw new UserAuthenticationException();
         }
-        
+
         if(userName.equals(userRole.userNameADMIN)||userPassword.equals(userRole.userPasswordADMIN)){
             this.userRole = UserRole.ADMIN;
         }else if(userName.equals(userRole.userNameGUEST)||userPassword.equals(userRole.userPasswordGUEST)){
@@ -24,8 +24,8 @@ public class UserAuthentication {
         }
     }
 
-    public UserAuthentication(String userName, String userPassword) throws UserAuthenticationException {
-        checkUserRole(userName, userPassword);
-
-    }
+//    public UserAuthentication(String userName, String userPassword) throws UserAuthenticationException {
+//        checkUserRole(userName, userPassword);
+//
+//    }
 }
